@@ -18,19 +18,22 @@ setupdir=${homedir}/machine_setup
 # list of files/folders to symlink in ${homedir}
 files="bash_profile bashrc bash_prompt aliases private"
 
-# change to the setup directory
-echo "Changing to the ${setupdir} directory"
-cd ${setupdir}
-echo "...done"
-
 # create symlinks (will overwrite old dotfiles)
 for file in ${files}; do
     echo "Creating symlink to $file in home directory."
     ln -sf ${setupdir}/.${file} ${homedir}/.${file}
 done
 
+# change to the home directory
+echo "Changing to the ${homedir} directory"
+cd ${homedir}
+echo "...done"
+
 # Linux Setup
 sudo apt install curl
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py
+rm get-pip.py
 
 # Download Git Auto-Completion
 curl "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash" > ${homedir}/.git-completion.bash
@@ -43,20 +46,10 @@ test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>
 echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 brew install patchelf
 brew install gcc
-./brew.sh
+${setupdir}/brew.sh
 
-# Set up VSCode and Sublime
+# Install VSCode
 sudo snap install --classic code # or code-insiders
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-sudo apt-get install apt-transport-https
-sudo snap install sublime-text --classic
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-./sublime.sh
-
-# change to the home directory
-echo "Changing to the ${homedir} directory"
-cd ${homedir}
-echo "...done"
 
 # Install Node, Twilio CLI, and AWS CLI
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash

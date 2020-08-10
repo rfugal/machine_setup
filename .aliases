@@ -2,6 +2,7 @@
 alias ch='history | grep "git commit"'
 alias hg='history | grep'
 alias python=python3
+alias pip='python3 -m pip'
 # alias yt='subl ~/Google\ Drive/YouTube/Scripts/'
 # alias cyt='cd ~/Google\ Drive/YouTube/Scripts/'
 # alias oyt='open ~/Google\ Drive/YouTube/Scripts/'
