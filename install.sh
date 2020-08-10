@@ -53,7 +53,7 @@ sudo snap install sublime-text --classic
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 ./sublime.sh
 
-# change to the setup directory
+# change to the home directory
 echo "Changing to the ${homedir} directory"
 cd ${homedir}
 echo "...done"
