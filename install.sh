@@ -51,7 +51,8 @@ nvm install --lts
 nvm use v.12.18.3
 sudo apt-get install libsecret-1-dev
 npm install twilio-cli -g
-# curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-# unzip awscliv2.zip
-# sudo ./aws/install
-# rm awscliv2.zip
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+rm awscliv2.zip
+rm -rfd aws/
